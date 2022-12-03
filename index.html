@@ -29,10 +29,10 @@
                 <td class="header_table_cell_2">
                     <ul class="nav-bar">
                         <li><a href="#seth">Seth Klupka</a></li>
-                        <li><a href="#hannah">Hannah Bradley</a></li>
                         <li><a href="#robert">Robert Thomas</a></li>
                         <li><a href="#krutin">Krutin Patel</a></li>
                         <li><a href="#aisha">Aisha Bah</a></li>
+                        <li><a href="#hannah">Hannah Bradley</a></li>
                     </ul>  
                 </td>
             </tr>
@@ -72,16 +72,6 @@
         <img class="section-img" src="images\sft-results.png" alt="SFT-GAN image">
     </div>
 
-    <!-------------------->
-    <!--     SRNTT          hannah -->
-    <!-------------------->
-    <div class="section-super-header" id="hannah">SRNTT</div>
-    <div class="section-super-paragraph">Super-Resolution by Neural Texture Transfer</div>
-    <div class="section-super-author-name">Hannah Bradley</div>
-    <!-- Central Page Div -->
-    <div class="center-content-div">
-    </div>
-
 
 
     <!-------------------->
@@ -92,6 +82,14 @@
     <div class="section-super-author-name">Robert Thomas</div>
     <!-- Central Page Div -->
     <div class="center-content-div">
+        <h2 class="section-header">Introduction</h2>
+        <p class="section-paragraph">The IDN model, or information distillation network, was developed in order to address the issue faced by many models that rely on CNNs. That is, in order to create higher quality images, deeper and wider networks are needed by the model. This leads to an overall higher cost in computational power by the system. The IDN model is designed with lightweight parameters and computational complexity in order to address this.</p>
+        <h2 class="section-header">Architecture</h2>
+        <img class="section-img" src="images\robert-arch.png" alt="SFT-GAN image">
+        <p class="section-paragraph">The IDN consists of 3 major parts: a feature extraction block, multiple stacked distillation blocks, and a reconstruction block. In the FBlock, two 3x3 convolutional layers are used to extract the feature maps from the original image. Each DBlock contains an enhancement unit and a compression unit with stacked style. Each individual DBlock is then chained together with the next for as many times as desired. The output from these blocks is then fed into the RBlock for reconstruction. The output from the RBlock is then combined with the bicubic output to create the new image.</p>
+        <h2 class="section-header">Results and Conclusion</h2>
+        <img class="section-img" src="images\robert-results.png" alt="SFT-GAN image">
+        <p class="section-paragraph">In these examples we see the results of the model. There is a minor increase in quality from the original image, and a major increase from the bicubic image. In the image with the bird it is more pronounced, with the stripes on the bird being more defined and focused from the original image. Overall, while the IDN model does show a marked increase in quality over the bicubic model, it only has a minor increase over the original image. In some cases, it would be fair to conclude that the image is actually of a lower quality compared to the original image.</p>
     </div>
 
 
@@ -133,6 +131,29 @@
     </div>
 
 
+
+    <!-------------------->
+    <!--     SRNTT          hannah -->
+    <!-------------------->
+    <div class="section-super-header" id="hannah">SRNTT</div>
+    <div class="section-super-paragraph">Super-Resolution by Neural Texture Transfer</div>
+    <div class="section-super-author-name">Hannah Bradley</div>
+    <!-- Central Page Div -->
+    <div class="center-content-div">
+        <h2 class="section-header">Introduction</h2>
+        <p class="section-paragraph">SRNTT(Super-Resolution by Neural Texture Transfer), is a reference-based super-resolution approach which takes an input reference image and low resolution image as input. The main idea of this approach is to adaptively transfer textures from the reference image to the low resolution one.</p>
+        <img class="section-img" src="images\hannah-intro.png" alt="SFT-GAN image">
+        <h2 class="section-header">Architecture</h2>
+        <p class="section-paragraph">The main things to note about this model is the use of feature swapping and texture transfer. What it’s supposed to do is search for any matching texture from the reference photo in the feature space and then transfer any of the matching textures to the super resolution image in a multi-scale fashion.</p>
+        <img class="section-img" src="images\hannah-arch.png" alt="SFT-GAN image">
+        <p class="section-paragraph">The model makes sure to regularize on the texture consistency between the super resolution image and the matched textures of the reference image. The final output is synthesized in an end-to-end manner.</p>
+        <h2 class="section-header">Architecture Texture Transfer</h2>
+        <p class="section-paragraph">One of the most important structures of SRNTT is the texture transfer aspect. This figure shows an illustration of what the network structure of texture transfer looks like at a one scale, where the residual blocks extract related texture from the reference image based on the low resolution image and merge it with target content.</p>
+        <img class="section-img" src="images\hannah-arch2.png" alt="SFT-GAN image">
+        <p class="section-paragraph">The textures that are dissimilar to the low resolution image will have lower weight, so in the texture transfer there will be a lower penalty for it. This means the texture transfer from reference image to the super resolution image is adaptively enforced based on the quality of the reference image, leading to more robust texture hallucination.</p>
+        <h2 class="section-header">Conclusion</h2>
+        <p class="section-paragraph">SRNTT is best known to have good performance when the low resolution image and reference image are misaligned to a certain extent. SRNTT can restore better texture details, but the final reconstruction result is not done perfectly due to the low utilization of features between channels.</p>
+    </div>
 
 </body>
 </html>
