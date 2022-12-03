@@ -92,7 +92,11 @@ ul.nav-bar li {
     display:inline;
     margin-left: 1em;
     font-size: large;
-  }
+}
+
+.nav-bar{
+    margin-right: 10px;
+}
 
 .section-header{
     padding-left: 50px;
