@@ -42,7 +42,7 @@
 
 
     <!-------------------->
-    <!--    SFT GAN     -->
+    <!--    SFT GAN         seth -->
     <!-------------------->
     <div class="section-super-header" id="seth">SFT - GAN</div>
     <div class="section-super-paragraph">Special Feature Transform - Generative Adversarial Network</div>
@@ -62,7 +62,7 @@
         <img class="section-img" src="images\ssm.png" alt="SFT-GAN image">
         <p class="section-paragraph">SFT layers are conditioned on semantic segmentation probability maps, based on which it generates a pair of modulation parameters to apply affine transformation spatially on feature maps of the network.</p>
     
-        <h2 class="section-header">SFT Layer Integration</h2>
+        <h2 class="section-header">SFT Layer Integration and Architecture</h2>
         <p class="section-paragraph">This figure below shows how SFT layers can be implemented in a super resolution network. All SFT layers share a condition network. The role of the condition network is to generate intermediate conditions from the prior, and broadcast the conditions to all SFT layers for further generation of modulation parameters. Some advantage of SFT layers are that they are parameter efficient, can easily be introduced to existing networks, they provide rich semantic regions in just a single forward pass, and also can be used in conjunction with depth maps.</p>
         <img class="section-img" src="images\SFT-arch.png" alt="SFT-GAN image">
         <p class="section-paragraph">In a typical super resolution study, images are downsampled by 4 times which is used as input shown in the top left. Using a 4x downsample still produces satisfactory segmentation results. The architecture is split into two streams: a condition network and a super resolution network. The condition network takes segmentation probability maps as input, shown at the bottom left, and are processed by 4 convolution layers. These will generate intermediate conditions shared by the SFT layers. The super resolution network is built with 16 residual blocks with the SFT layers, which take the shared conditions as input and learn to modulate the feature maps.</p>
@@ -73,7 +73,7 @@
     </div>
 
     <!-------------------->
-    <!--     SRNTT      -->
+    <!--     SRNTT          hannah -->
     <!-------------------->
     <div class="section-super-header" id="hannah">SRNTT</div>
     <div class="section-super-paragraph">Super-Resolution by Neural Texture Transfer</div>
@@ -85,7 +85,7 @@
 
 
     <!-------------------->
-    <!--   IDN-Caffe    -->
+    <!--   IDN-Caffe        robert -->
     <!-------------------->
     <div class="section-super-header" id="robert">IDN-Caffe</div>
     <div class="section-super-paragraph">Information Distillation Network - Caffe</div>
@@ -96,19 +96,34 @@
 
 
     <!-------------------->
-    <!--     SRGAN      -->
+    <!--     SRGAN          krutin --> 
     <!-------------------->
     <div class="section-super-header" id="krutin">SRGAN</div>
     <div class="section-super-paragraph">Super-Resolution Generative Adversarial Network</div>
     <div class="section-super-author-name">Krutin Patel</div>
     <!-- Central Page Div -->
     <div class="center-content-div">
+        <h2 class="section-header">Introduction</h2>
+        <p class="section-paragraph">Goal: Use the SRGAN model to create SR pictures from low-resolution photos or videos.<br><br>Problem: Finer texture features can be recovered when upscaling factors are high, although this could leave low-resolution images missing high-frequency details.</p>
+        <p class="section-paragraph">Estimating the differences and alignment between high-resolution and low-resolution images from their corresponding super-resolution is a difficult task, and an underappreciated SR difficulty is the high degree of upscaling factors and well-rebuilt texture features.</p>
+        <h2 class="section-header">Architecture</h2>
+        <img class="section-img" src="images\krutin_arch.png" alt="SRGAN image">
+        <p class="section-paragraph">Generator network utilizing fully convolutional SRRESNET model architecture and high-quality SR images.<br><br>The discriminator model assures the overall architecture's quality of the images, the discriminator model functions as a model classifier and produces natural images. The ReLu layer is followed by a 9x9 convolutional layer with 64 features in the generator architecture. ReLu is used because of the non-linear functions of the mapping of LR to HR pictures. The following phase makes use of residual blocks, which have a batch normalization layer after them and a CNN layer of 3x3 kernels and 64 features. Discriminator architecture supports a normal GAN technique, and when a generator and discriminator are combined simultaneously, DA can locate phony images while GA attempts to create realistic images while avoiding discriminator detection.</p>
+        <h2 class="section-header">Conclusion</h2>
+        <img class="section-img" src="images\krutin_conc.png" alt="SRGAN image">
+        <p class="section-paragraph">The reconstruction results and relevant references for the HR pictures using 4x upscaling are shown in the figure.</p>
+        <img class="section-img" src="images\krutin_conc2.png" alt="SRGAN image">
+        <p class="section-paragraph">In the table, it is the comparison of NN, bicubic, SRGAN, and various models including original HR on benchmark data with 4x upscaling.</p>
+        <h2 class="section-header">Summary</h2>
+        <p class="section-paragraph">A proposed SRGAN model that uses a loss function that incorporates adversarial loss and content loss uses a loss function to recover finer texture, however, may leave LR pictures lacking in frequency details. In order to produce better texture details, the Adversarial Loss pushes the solution into natural images utilizing the discriminator network that is trained between the SR images and the original photo-realistic images.</p>
+        <h2 class="section-header">Resources</h2>
+        <p class="section-paragraph">Github: https://github.com/idealo/image-super-resolution<br><br>Paper: https://openaccess.thecvf.com/content_cvpr_2017/papers/Ledig_Photo-Realistic_Single_Image_CVPR_2017_paper.pdf<br><br>Authors: Christian Ledig, Lucas Theis, Ferenc Huszar, Jose Caballero, Andrew Cunningham, Alejandro Acosta, Andrew Aitken, Alyken Tejani, Johannes Totz, Zehan Wang, Wenzhe Shi Twitter</p>
     </div>
 
 
 
     <!-------------------->
-    <!--     EDSR       -->
+    <!--     EDSR           aisha -->
     <!-------------------->
     <div class="section-super-header" id="aisha">EDSR</div>
     <div class="section-super-paragraph">Enhanced Deep Super Resolution</div>
@@ -122,28 +137,3 @@
 </body>
 </html>
 
-
-
-    <!--
-    <div class="section-super-header" id="seth">SFT - GAN</div>
-    <div class="section-super-paragraph">Special Feature Transform - Generative Adversarial Network</div>
-    <div class="section-super-author-name">Seth Klupka</div>
-
-    <div class="center-content-div">
-
-    <h2 class="section-header">Abstract</h2>
-  
-    <p class="section-paragraph" id="abstract">Despite that convolutional neural networks (CNN) have recently demonstrated high-quality reconstruction for single-image super-resolution (SR), recovering natural and realistic texture remains a challenging problem. In this paper, we show that it is possible to recover textures faithful to semantic classes . In particular, we only need to modulate features of a few intermediate layers in a single network conditioned on semantic segmentation probability maps. This is made possible through a novel Spatial Feature Transform (SFT) layer that generates affine transformation parameters for spatial-wise feature modulation. SFT layers can be trained end-to-end together with the SR network using the same loss function. During testing, it accepts an input image of arbitrary size and generates a high-resolution image with just a single forward pass conditioned on the categorical priors. Our final results show that an SR network equipped with SFT can generate more realistic and visually pleasing textures in comparison to state-of-the-art SRGAN and EnhanceNet.</p>
-      
-    <h2 class="section-header">Introduction</h2>
-           
-            <h3 class="section-sub-header">The Problem</h3>
-            
-            <p class="section-sub-paragraph">Single-image super-resolution (SISR) is a computer vision task that reconstructs a high-resolution (HR) image from a low-resolution (LR) image. Though there has been great advancements in SISR, a glaring issue still remains when attempting to retain texture detail. Patches selected from two different LR images could look similar, but the original HR image reveals that they are vastly different. For example, the figure below shows two LR images. One is a patch from the side of a brick building, and the other is a patch from a flower bush. Given only the patch with no other context, the two present similar texture and color.</p>       
-          
-            <img class="section-sub-img" src="https://machine-learning-note.readthedocs.io/en/latest/_images/SFTGAN.png" alt="SFT-GAN image">
-            
-            <p class="section-sub-paragraph">Single-image super-resolution (SISR) is a computer vision task that reconstructs a high-resolution (HR) image from a low-resolution (LR) image. Though there has been great advancements in SISR, a glaring issue still remains when attempting to retain texture detail. Patches selected from two different LR images could look similar, but the original HR image reveals that they are vastly different. For example, the figure below shows two LR images. One is a patch from the side of a brick building, and the other is a patch from a flower bush. Given only the patch with no other context, the two present similar texture and color.</p>
-    </div>
-
-    -->

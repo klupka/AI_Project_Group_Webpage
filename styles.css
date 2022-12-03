@@ -16,7 +16,6 @@ html, body
     text-align: left;
     margin: auto;
     height:100%;
-    /* inner padding so that the text doesnt touch the edges */
     max-width: 1280px;
     /* Black shadow with 10px blur */
     filter: drop-shadow(0px 0px 5px #21262F);
@@ -28,13 +27,12 @@ html, body
 }
 
 .page_header{
-    text-align: left;
     padding-top: 10px;
     padding-bottom: 10px;
-    margin: auto;
-    width: auto;
-    padding-left: 25%;
-    padding-right: 25%;
+    padding-right:20px;
+    padding-left:20px;
+    width: 1280px;
+    height: auto;
     background-color: #242933;
 }
 
@@ -86,7 +84,7 @@ html, body
 
 ul.nav-bar li {
     display:inline;
-    margin-left: 40px;
+    margin-left: 1em;
     font-size: large;
   }
 
@@ -160,13 +158,15 @@ ul.nav-bar li {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    max-width: 1000px;
-    max-height: 600px;
+    width:70%;
+    height:auto;
 }
 
 #sticky {
     position: fixed;
     top: 0; 
+    left: 50%;
+    transform: translate(-50%, 0);
     margin-left: auto;
     margin-right: auto;
     z-index: 100;
