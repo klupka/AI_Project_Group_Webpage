@@ -28,11 +28,11 @@
                 </td>
                 <td class="header_table_cell_2">
                     <ul class="nav-bar">
-                        <li><a href="#seth">Seth Klupka</a></li>
-                        <li><a href="#robert">Robert Thomas</a></li>
-                        <li><a href="#krutin">Krutin Patel</a></li>
-                        <li><a href="#aisha">Aisha Bah</a></li>
-                        <li><a href="#hannah">Hannah Bradley</a></li>
+                        <li><a href="#seth">SFT-GAN</a></li>
+                        <li><a href="#robert">IDN-Caffe</a></li>
+                        <li><a href="#krutin">SRGAN</a></li>
+                        <li><a href="#aisha">EDSR</a></li>
+                        <li><a href="#hannah">SRNTT</a></li>
                     </ul>  
                 </td>
             </tr>
@@ -128,6 +128,23 @@
     <div class="section-super-author-name">Aisha Bah</div>
     <!-- Central Page Div -->
     <div class="center-content-div">
+        <h2 class="section-header">Introduction</h2>
+        <p class="section-paragraph">EDSR formally stands for  Enhanced Deep Super Resolution. This is a model which is proposed to improve the current state of the art  performance of deep convolutional neural networks  by expanding the model size and  stabilizing  the training procedure. EDSR aims to reconstruct a high-resolution image from a single low-resolution image without the current limitation of optimality.</p>
+        <img class="section-img" src="images\aisha-intro.jpg" alt="SRGAN image">
+        <p class="section-paragraph">The figure above  shows the differences in the  result from the EDSR method compared with the existing state of the art method. Notice that the last two methods have more clarity of the feathers texture on the bird. </p>
+
+        <h2 class="section-header">Architecture</h2>
+        <img class="section-img" src="images\aisha-arch.png" alt="SRGAN image">
+        <p class="section-paragraph">Single-Scale SR Network (EDSR) Model Architecture  uses a recently published super resolution network in the top and an (EDSR) version of the residual network architecture with the simpler structure.</p>
+        <p class="section-sub-paragraph">In each residual block, constant scaling layers are placed after the last convolution layers. These modules stabilize the training procedure greatly when using a large number of filters. </p>
+        <p class="section-sub-paragraph">The super resolution network is built with 16 residual blocks so that most of the parameters are shared across different scales shown in the bottom figure.</p>
+
+        <h2 class="section-header">Results and Conclusion</h2>
+        <img class="section-img" src="images\aisha-results.png" alt="SRGAN image">
+        <p class="section-paragraph">The proposed EDSR was tested on the DIV2K dataset shown in the figure on the right. Firstly, The  DIV2K validation and the red indicaties the best performance and blue indicates second best. The last 2 columns show significant performance on the bigger models of EDSR+ and MDSR+ but it contains less GPU memory without involvement of batch normalization.</p>
+        <p class="section-paragraph">The Figure indicates the Qualitative Comparison of various models on x4 SR. Proposed models successfully reconstruct textures and the edges of the HR images to result  in better SR outputs.</p>
+        <p class="section-paragraph">Note the ESDR requires much less GPU memory since they do not have a batch normalization layer. Most importantly, proposed single-scale and multi-scale models have achieved the top ranks in both the standard benchmark datasets and the DIV2K dataset shown above. </p>
+
     </div>
 
 
